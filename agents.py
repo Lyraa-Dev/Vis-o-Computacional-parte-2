@@ -39,17 +39,15 @@ class Target:
         angle = np.arctan2(center_y - self.y, center_x - self.x)
         angle += random.uniform(-np.pi/4, np.pi/4)  # Variação de ±45 graus
         
-        # Velocidade
-        self.speed = random.uniform(
-            self.config.TARGET_MIN_SPEED, 
-            self.config.TARGET_MAX_SPEED
-        )
+        # Velocidade: 8-15 px/frame (50-150% do tamanho de 20px)
+        # 50% de 20px = 10px, 150% de 20px = 30px, mas a especificação diz 8-15px
+        self.speed = random.uniform(8, 15)
         
-        # Vetor de direção (AGORA DEFINIMOS dx e dy ANTES de calcular o ângulo)
+        # Vetor de direção
         self.dx = np.cos(angle) * self.speed
         self.dy = np.sin(angle) * self.speed
         
-        # Calcular ângulo inicial baseado na direção (AGORA dx e dy já estão definidos)
+        # Calcular ângulo inicial baseado na direção
         self.angle = math.degrees(math.atan2(-self.dy, self.dx)) - 90
         
         # Histórico para detecção de movimento
@@ -103,18 +101,26 @@ class Target:
                              self.size, self.size))
 
 class Pursuer:
-    def __init__(self, config, sprite_manager):
+    def __init__(self, config, sprite_manager, target_speed=None):
         self.config = config
         self.sprite_manager = sprite_manager
         self.size = config.PURSUER_SIZE
         self.color = config.PURSUER_COLOR
-        self.speed = config.PURSUER_SPEED
         self.reaction_counter = 0
         self.angle = 0  # Ângulo para rotação do sprite
         
         # Posição inicial no centro
         self.x = config.WIDTH / 2
         self.y = config.HEIGHT / 2
+        
+        # Velocidade: 6-12 px/frame (até 70% da velocidade do Ligeirinho)
+        if target_speed is not None:
+            # Calcular 70% da velocidade do alvo, mas limitar entre 6 e 12
+            calculated_speed = target_speed * 0.7
+            self.speed = max(6, min(12, calculated_speed))
+        else:
+            # Se não temos a velocidade do alvo, usa um valor aleatório no intervalo
+            self.speed = random.uniform(6, 12)
         
         # Estado de detecção
         self.target_detected = False

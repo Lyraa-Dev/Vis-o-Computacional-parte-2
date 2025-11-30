@@ -1,0 +1,22 @@
+=== RELATÓRIO EXECUTIVO - BENCHMARK DE ESTRATÉGIAS ===
+
+Data e Hora: 29/11/2025 18:49:20
+Total de Execuções: 300
+Capturas por Estratégia: 100
+
+PRINCIPAIS DESCOBERTAS:
+==================================================
+Estratégia Mais Rápida: intercept
+Estratégia Mais Lenta: proportional
+
+INSIGHTS:
+==================================================
+• A estratégia 'intercept' foi 9.7% mais rápida que a mais lenta
+• A estratégia 'intercept' apresentou maior consistência
+• A estratégia 'intercept' obteve melhor desempenho em detecção
+
+RECOMENDAÇÕES:
+==================================================
+• Considere usar 'intercept' para máxima velocidade
+• Use 'intercept' para cenários que requerem previsibilidade
+• 'intercept' é recomendada quando a detecção é crítica

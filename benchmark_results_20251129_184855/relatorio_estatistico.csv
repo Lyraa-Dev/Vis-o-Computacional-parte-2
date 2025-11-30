@@ -1,0 +1,4 @@
+Estratégia,Capturas Realizadas,Tempo Médio (frames),Desvio Padrão (frames),Tempo Mínimo (frames),Tempo Máximo (frames),Taxa de Sucesso,Precisão Média,Recall Médio,F1-Score Médio,Detecções Médias por Captura,Alvo Perdido (média)
+direct,100,624.03,937.6057780594707,21,5000,1.0,1.0,0.9944870141426146,0.9972122330254741,623.29,0.11
+intercept,100,578.0,694.7688519038239,19,3666,1.0,1.0,0.9960658471368157,0.9980123187362355,577.28,0.09
+proportional,100,640.23,768.7300146700046,19,5000,1.0,1.0,0.9950249988181877,0.9974743312962561,639.63,0.05
